@@ -3,4 +3,8 @@
     <string name="button_addHorse">Add Horse</string>
     <string name="hint_horseTitle">Horse Name</string>
     <string name="hint_horseDescription">Horse Description</string>
+    <string name="menu_addHorse">Add</string>
+    <string name="menu_cancelHorse">Cancel</string>
+    <string name="enter_horse_title"> Please enter a Horse Title </string>
+    <string name="save_horse"> Save Horse </string>
 </resources>

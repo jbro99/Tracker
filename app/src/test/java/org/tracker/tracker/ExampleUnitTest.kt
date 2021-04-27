@@ -1,4 +1,4 @@
-package org.wit.tracker
+package org.tracker.tracker
 
 import org.junit.Test
 
