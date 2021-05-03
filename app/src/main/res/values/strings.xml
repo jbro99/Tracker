@@ -26,6 +26,8 @@
     <string name="hint_horseTrainer">Trainer</string>
     <string name="horse_tracker">Horse Tracker</string>
     <string name="add_horse_title">Add Horse</string>
+    <string name="breeder_title">BREEDER</string>
+    <string name="breeder_value">BREEDER</string>
 
     <!--    string array used for spinner-->
     <string-array name="horse_sex">

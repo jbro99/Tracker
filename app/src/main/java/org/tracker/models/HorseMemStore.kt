@@ -22,7 +22,7 @@ class HorseMemStore : HorseStore, AnkoLogger {
         horses.add(horse)
         logAll()
     }
-
+ //updating the horse details
     override fun update(horse: HorseModel) {
         var foundHorse: HorseModel? = horses.find { p -> p.id == horse.id }
         if (foundHorse != null) {

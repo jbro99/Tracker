@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_horse.view.*
 import kotlinx.android.synthetic.main.card_horse.view.*
 import org.tracker.R
 import org.tracker.helpers.readImageFromPath
@@ -19,6 +18,7 @@ class HorseAdapter constructor(
     private val listener: HorseListener
 ) : RecyclerView.Adapter<HorseAdapter.MainHolder>() {
 
+    //inflating the card view into the view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -29,8 +29,11 @@ class HorseAdapter constructor(
         )
     }
 
+    //binding the data into the view holder
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val horse = horses[position]
+
+        //method for binding the data
         holder.bind(horse, listener)
     }
 
@@ -38,6 +41,7 @@ class HorseAdapter constructor(
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        //mapping the data to the view holder
         fun bind(horse: HorseModel, listener: HorseListener) {
             itemView.tv_horseTitle.text = horse.title
             itemView.tv_horseBreeder.text = horse.breeder

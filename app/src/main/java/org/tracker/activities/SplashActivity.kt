@@ -6,13 +6,13 @@ import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.welcome.*
+import kotlinx.android.synthetic.main.activity_splash.*
 import org.tracker.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) { //creates the splash screen
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.welcome)//
+        setContentView(R.layout.activity_splash)//
 
         //loading the animation
         val fadeIn = AnimationUtils.loadAnimation(this,R.anim.fade_in)
@@ -22,7 +22,8 @@ class SplashActivity : AppCompatActivity() {
         tv_welcome.animation = fadeIn
         img_icon.animation = zoomIn
 
-        Handler(Looper.getMainLooper()).postDelayed({//going to delay the splash screen for 1000 seconds
+        //going to delay the splash screen for 1000 seconds
+        Handler(Looper.getMainLooper()).postDelayed({
             val intent=Intent(this, HorseListActivity::class.java)
             startActivity(intent) //calling the intent method
             finish()// will be terminated

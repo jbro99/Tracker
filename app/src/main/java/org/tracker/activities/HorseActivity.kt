@@ -30,7 +30,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
     var horse = HorseModel()
     lateinit var app: MainApp
     var edit = false
-    val IMAGE_REQUEST = 1
+    private val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
     //var location = Location(52.245696, -7.139102, 15f)
 
@@ -48,6 +48,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
         horseSexSpinner.adapter=adapter
         horseSexSpinner.onItemSelectedListener=this
 
+//   getting the details of the horse to update
         if (intent.hasExtra("horse_edit")) {
             edit = true
             horse = intent.extras?.getParcelable<HorseModel>("horse_edit")!!
@@ -64,6 +65,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
         btnAdd.setText(R.string.save_horse)
 
 
+        //Add/Update Horse Button
         btnAdd.setOnClickListener() {
 
             horse.title = horseTitle.text.toString()
@@ -71,6 +73,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
             horse.owner = horseOwner.text.toString()
             horse.trainer = horseTrainer.text.toString()
 
+            //Data Validation to ensure no empty data can be set
             if (horse.title.isEmpty()) {
                 toast("Please enter a horse title")
             } else if (horse.breeder.isEmpty()) {
@@ -86,17 +89,17 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
                     app.horses.create(horse.copy())
                 }
             }
-
             setResult(RESULT_OK)
             finish()
         }
 
-
-
+        //Image Picker Button
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
 
         }
+
+        //Location Picker Button
         racingLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (horse.zoom != 0f) {
@@ -111,6 +114,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
         }
     }
 
+    //Menu Icon
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_horse, menu)
         if (edit && menu != null) menu.getItem(0).setVisible(true)
@@ -130,6 +134,7 @@ class HorseActivity : AppCompatActivity(), AnkoLogger, AdapterView.OnItemSelecte
         return super.onOptionsItemSelected(item)
     }
 
+    //Image and Location Setter
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {

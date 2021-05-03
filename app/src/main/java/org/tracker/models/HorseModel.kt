@@ -2,7 +2,7 @@ package org.tracker.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-
+ //data class to store horse model
 @Parcelize
 data class HorseModel(var id: Long = 0,
                       var title: String = "",

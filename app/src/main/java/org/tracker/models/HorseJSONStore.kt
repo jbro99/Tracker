@@ -8,7 +8,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.tracker.helpers.*
 import java.util.*
 
-val JSON_FILE = "horses.json" // new variable called json file and naming it horses.json. were going to serelize to this file
+const val JSON_FILE = "horses.json" // new variable called json file and naming it horses.json. were going to serelize to this file
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create() //std way of setting up the gsonbuilder
 val listType = object : TypeToken<java.util.ArrayList<HorseModel>>() {}.type //gson needs to know the list type thats going to be encoding and decoding
 
@@ -16,13 +16,11 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class HorseJSONStore : HorseStore, AnkoLogger {
+class HorseJSONStore(val context: Context) : HorseStore, AnkoLogger {
 
-    val context: Context
     var horses = mutableListOf<HorseModel>()
 
-    constructor (context: Context) {
-        this.context = context
+    init {
         if (exists(context, JSON_FILE)) {
             deserialize()
         }
@@ -52,9 +50,10 @@ class HorseJSONStore : HorseStore, AnkoLogger {
         val jsonString = read(context, JSON_FILE)
         horses = Gson().fromJson(jsonString, listType)
     }
+    //updating the horse details
     override fun update(horse: HorseModel) {
         val horsesList = findAll() as ArrayList<HorseModel>
-        var foundHorse: HorseModel? = horsesList.find { p -> p.id == horse.id }
+        val foundHorse: HorseModel? = horsesList.find { p -> p.id == horse.id }
         if (foundHorse != null) {
             foundHorse.title = horse.title
             foundHorse.owner = horse.owner

@@ -33,17 +33,21 @@ class HorseListActivity : AppCompatActivity(), HorseListener {
        setSupportActionBar(toolbar)
     }
 
+    //Adding Menu Items
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    //Handling menu items click action
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add -> startActivityForResult<HorseActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }
+
+    //passing data to adapter about the selected horse details
     override fun onHorseClick(horse: HorseModel) {
         startActivityForResult(intentFor<HorseActivity>().putExtra("horse_edit", horse), 0)
     }
@@ -52,10 +56,13 @@ class HorseListActivity : AppCompatActivity(), HorseListener {
         loadHorses()
         super.onActivityResult(requestCode, resultCode, data)
     }
+
+    //fetching all the horses added to list
     private fun loadHorses() {
         showHorses(app.horses.findAll())
     }
 
+    //setting data to adapter
     fun showHorses (horses: List<HorseModel>) {
         recyclerView.adapter = HorseAdapter(horses, this)
         recyclerView.adapter?.notifyDataSetChanged()

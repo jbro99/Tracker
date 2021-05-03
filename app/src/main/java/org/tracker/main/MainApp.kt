@@ -11,7 +11,7 @@ class MainApp : Application(), AnkoLogger {
 
     //val horses = ArrayList<HorseModel>() //putting horse collection into this class
     lateinit var horses: HorseStore
-
+  //getting the insatnce of horseMemstroe and horseJSONStore
     override fun onCreate() {
         super.onCreate()
         horses = HorseMemStore()
