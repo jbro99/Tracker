@@ -3,8 +3,35 @@
     <string name="button_addHorse">Add Horse</string>
     <string name="hint_horseTitle">Horse Name</string>
     <string name="hint_horseDescription">Horse Description</string>
+    <string name="hint_horseBreeder">Horse Breeder</string>
+    <string name="hint_horseOwner">Owner</string>
     <string name="menu_addHorse">Add</string>
     <string name="menu_cancelHorse">Cancel</string>
     <string name="enter_horse_title"> Please enter a Horse Title </string>
     <string name="save_horse"> Save Horse </string>
+    <string name="change_horse_image">Change Image</string>
+    <string name="select_horse_image">Select horse image</string>
+    <string name="horse_image">horse image</string>
+
+    <string name="button_location">Set Location</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="menu_deleteHorse">Delete</string>
+    <string name="Welcome">Welcome to Horse Tracker</string>
+    <string name="horse_sex">Horse Sex</string>
+    <string name="hint_horse_age">Horse Age</string>
+    <string name="enter_horse_breeder">Enter  Horse Breeder</string>
+    <string name="enter_horse_ownner">Enter Horse Owner</string>
+    <string name="enter_horse_sex">Enter Horse sex</string>
+    <string name="add_horse">Add Horse</string>
+    <string name="hint_horseTrainer">Trainer</string>
+    <string name="horse_tracker">Horse Tracker</string>
+    <string name="add_horse_title">Add Horse</string>
+
+    <!--    string array used for spinner-->
+    <string-array name="horse_sex">
+        <item>Male: Colt</item>
+        <item>Female: Fillie</item>
+    </string-array>
+
+
 </resources>

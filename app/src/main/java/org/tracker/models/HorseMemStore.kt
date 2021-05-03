@@ -11,7 +11,7 @@ internal fun getId(): Long {
 
 class HorseMemStore : HorseStore, AnkoLogger {
 
-    val horses = ArrayList<HorseModel>()
+    private val horses = ArrayList<HorseModel>()
 
     override fun findAll(): List<HorseModel> {
         return horses
@@ -27,10 +27,21 @@ class HorseMemStore : HorseStore, AnkoLogger {
         var foundHorse: HorseModel? = horses.find { p -> p.id == horse.id }
         if (foundHorse != null) {
             foundHorse.title = horse.title
-            foundHorse.description = horse.description
+            foundHorse.owner = horse.owner
+            foundHorse.breeder=horse.breeder
+            foundHorse.sex = horse.sex
+            foundHorse.image = horse.image
+            foundHorse.trainer = horse.trainer
+            foundHorse.lat = horse.lat
+            foundHorse.lng = horse.lng
+            foundHorse.zoom = horse.zoom
             logAll()
         }
     }
+    override fun delete(horse: HorseModel) {
+        horses.remove(horse)
+    }
+
      fun logAll() {
         horses.forEach{ info("${it}") }
     }

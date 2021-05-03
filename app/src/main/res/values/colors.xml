@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="navy">#000080</color>
     <color name="colorAccent">#FFFFFFFF</color>
+    <color name="background_dark">#202d50</color>
+    <color name="dark">#38497f</color>
+    <color name="blue">#4ab5fe</color>
+    <color name="text_color">#ecf5fb</color>
+
 </resources>

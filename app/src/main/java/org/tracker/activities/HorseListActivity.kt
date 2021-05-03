@@ -1,5 +1,6 @@
 package org.tracker.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -22,13 +23,14 @@ class HorseListActivity : AppCompatActivity(), HorseListener {
         setContentView(R.layout.activity_horse_list)
         app = application as MainApp
 
+        //layout and populates for display
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        //recyclerView.adapter = HorseAdapter(app.horses)
-        recyclerView.adapter = HorseAdapter(app.horses.findAll(), this)
+        loadHorses()
 
-        toolbarhorse.title = title
-       setSupportActionBar(toolbarhorse)
+        //enables action bar and set title
+        toolbar.title = getString(R.string.horse_tracker)
+       setSupportActionBar(toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,6 +46,19 @@ class HorseListActivity : AppCompatActivity(), HorseListener {
     }
     override fun onHorseClick(horse: HorseModel) {
         startActivityForResult(intentFor<HorseActivity>().putExtra("horse_edit", horse), 0)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //recyclerView.adapter?.notifyDataSetChanged()
+        loadHorses()
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+    private fun loadHorses() {
+        showHorses(app.horses.findAll())
+    }
+
+    fun showHorses (horses: List<HorseModel>) {
+        recyclerView.adapter = HorseAdapter(horses, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }
 
